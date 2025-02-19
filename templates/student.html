@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'quvchilar Ro'yxati</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>O'quvchilar Ro'yxati</h1>
+    <form action="{{ url_for('add_student') }}" method="post">
+        <label for="name">Ismi:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="surname">Familiyasi:</label>
+        <input type="text" id="surname" name="surname" required>
+        <label for="grade">Sinfi:</label>
+        <input type="text" id="grade" name="grade" required>
+        <input type="submit" value="Qo'shish">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ismi</th>
+                <th>Familiyasi</th>
+                <th>Sinfi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student['name'] }}</td>
+                <td>{{ student['surname'] }}</td>
+                <td>{{ student['grade'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

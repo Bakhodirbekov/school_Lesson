@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-blue-500 to-purple-600 flex flex-col min-h-screen text-white">
+
+    <!-- Header -->
+    <header class="bg-black bg-opacity-50 py-4 text-center shadow-lg">
+        <h1 class="text-3xl font-bold uppercase tracking-widest">Haftalik Darsliklar</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex justify-center items-center p-6">
+        <div class="w-full max-w-md bg-white bg-opacity-90 shadow-xl rounded-lg p-6 text-black">
+            <table class="table table-hover text-center">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th scope="col" class="text-lg font-semibold">Kunlar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kun in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}
+                    <tr>
+                        <td class="py-3 px-4 text-lg font-bold {% if kun in ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'] %}bg-blue-100 text-blue-900{% endif %} rounded-md">
+                            <a href="{{ url_for('darslar_kuniga_ko_ra', kun=kun) }}" class="text-blue-600 hover:text-blue-800 underline">{{ kun }}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-50 text-white text-center py-4 text-sm mt-auto">
+        <p class="mb-0">&copy; 2025 User Panel. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
